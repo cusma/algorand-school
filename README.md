@@ -31,6 +31,11 @@ Almost all the contents presented in the Algorand School derive directly from
 the [Algorand Developer Portal](https://developer.algorand.org/), which 
 remains the first and most important source of information about Algorand.
 
+## Versions
+- 🇺🇸 [English](https://github.com/cusma/algorand-school/blob/main/algorand-school-english.pdf)
+- 🇮🇹 Italian (_slides transaltion wip_, community contribution apprecciated...)
+- 🇧🇷 Brazilian Portugues - [Video aula](https://www.youtube.com/watch?v=Wl2JDXudGrM) (_slides translation wip_, community contribution apprecciated...)
+
 ## Contibuting with translations
 Would you like to contribute to the Algorand's educational cause? Help me with 
 the translation!
@@ -46,7 +51,8 @@ publish the PDF once the translation is finalized.
 
 All the contributors will be included into the `Credits` slide.
 
-## Versions
-- 🇺🇸 [English](https://github.com/cusma/algorand-school/blob/main/algorand-school-english.pdf)
-- 🇮🇹 Italian (_slides transaltion wip_, community contribution apprecciated...)
-- 🇧🇷 Brazilian Portugues - [Video aula](https://www.youtube.com/watch?v=Wl2JDXudGrM) (_slides translation wip_, community contribution apprecciated...)
+Thanks to everyone who forked or starred the repository! Let's learn Algorand together! 📚
+
+[![Stargazers repo roster for @cusma/algorand-school](https://reporoster.com/stars/dark/cusma/algorand-school)](https://github.com/cusma/algorand-school/stargazers)
+
+[![Forkers repo roster for @cusma/algorand-school](https://reporoster.com/forks/dark/cusma/algorand-school)](https://github.com/cusma/algorand-school/network/members)
