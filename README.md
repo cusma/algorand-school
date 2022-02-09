@@ -41,10 +41,22 @@ Would you like to contribute to the Algorand's educational cause? Help me with
 the translation!
 
 Just follow the translations guidelines:
-1. Fork the repo
+1. Fork this repo
 2. Rename `algorand-school-english.txt` into `algorand-school-<language>.txt`
-3. Add your translations for the text fields
-4. Submit a PR
+3. Add your translations for each text fields, in **addition** to the English one
+4. Do not translate acronyms and abbreviations (e.g. _AVM_, _VRF_, etc.)
+5. Do not translate `code` sections
+6. Always start a translated text field with `#`
+7. Submit a PR
+
+Example of editing `algorand-school-italian.txt`:
+```
+What is a blockchain?
+# Cos'è una blockchain?
+5
+A blockchain is a public ledger of transactional data, distributed across a system of multiple nodes in a network.
+# Una blockchain è un registro pubblico di dati transazionali, distribuito su un sistema di molteplici nodi in una rete.
+```
 
 I will review the translation, merge it into presentation's source file and 
 publish the PDF once the translation is finalized.
