@@ -48,5 +48,5 @@ All the contributors will be included into the `Credits` slide.
 
 ## Versions
 - 🇺🇸 [English](https://github.com/cusma/algorand-school/blob/main/algorand-school-english.pdf)
-- 🇮🇹 Italian (_wip_, community contribution apprecciated...)
-- 🇧🇷 Brazilian Portugues (_wip_, community contribution apprecciated...)
+- 🇮🇹 Italian (_slides transaltion wip_, community contribution apprecciated...)
+- 🇧🇷 Brazilian Portugues - [Video aula](https://www.youtube.com/watch?v=Wl2JDXudGrM) (_slides translation wip_, community contribution apprecciated...)
