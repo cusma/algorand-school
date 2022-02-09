@@ -8,10 +8,10 @@ and speed up the learning process.
 
 Main topics of the Algorand School are:
 
-1. Understanding Algorand Consensus and Algorand Networks
-2. Familiarizing with the Algorand Nodes and Dev Tools
-3. Shedding light on Algorand's Account and Transactions
-4. Clarifying how to develop dApps on the Algorand Virtual Machine
+1. 🕸 Understanding Algorand Consensus and Algorand Networks
+2. 🛠 Familiarizing with the Algorand Nodes and Dev Tools
+3. 🤝 Shedding light on Algorand's Account and Transactions
+4. 🤖 Clarifying how to develop dApps on the Algorand Virtual Machine
 
 ### Contents
 1. Algorand Consensus
@@ -47,6 +47,6 @@ publish the PDF once the translation is finalized.
 All the contributors will be included into the `Credits` slide.
 
 ## Versions
-- [English](https://github.com/cusma/algorand-school/blob/main/algorand-school-english.pdf)
-- Italian (_wip_, community contribution apprecciated...)
-- Portugues (_wip_, community contribution apprecciated...)
+- 🇺🇸 [English](https://github.com/cusma/algorand-school/blob/main/algorand-school-english.pdf)
+- 🇮🇹 Italian (_wip_, community contribution apprecciated...)
+- 🇧🇷 Brazilian Portugues (_wip_, community contribution apprecciated...)
