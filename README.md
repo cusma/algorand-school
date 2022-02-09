@@ -42,7 +42,7 @@ the translation!
 
 Just follow the translations guidelines:
 1. Fork this repo
-2. Rename `algorand-school-english.txt` into `algorand-school-<language>.txt`
+2. Copy and rename `algorand-school-english.txt` into `algorand-school-<language>.txt`
 3. Add your translations for each text fields, in **addition** to the English one
 4. Do not translate acronyms and abbreviations (e.g. _AVM_, _VRF_, etc.)
 5. Do not translate `code` sections
