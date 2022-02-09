@@ -6,12 +6,12 @@ The goal of the deck is providing a step-by-step introduction to Algorand's
 technology, ecosystem and tools, in order to lower the learning curve difficulty 
 and speed up the learning process. 
 
-Main topics of the Algorand School are:
+Main topics of the Algorand School:
 
-1. 🕸 Understanding Algorand Consensus and Algorand Networks
-2. 🛠 Familiarizing with the Algorand Nodes and Dev Tools
-3. 🤝 Shedding light on Algorand's Account and Transactions
-4. 🤖 Clarifying how to develop dApps on the Algorand Virtual Machine
+- 🕸 Understanding Algorand Consensus and Algorand Networks
+- 🛠 Familiarizing with the Algorand Nodes and Dev Tools
+- 🤝 Shedding light on Algorand's Account and Transactions
+- 🤖 Clarifying how to develop dApps on the Algorand Virtual Machine
 
 ### Contents
 1. Algorand Consensus
@@ -34,7 +34,7 @@ remains the first and most important source of information about Algorand.
 ## Versions
 - 🇺🇸 [English](https://github.com/cusma/algorand-school/blob/main/algorand-school-english.pdf)
 - 🇮🇹 Italian (_slides transaltion wip_, community contribution apprecciated...)
-- 🇧🇷 Brazilian Portugues - [Video aula](https://www.youtube.com/watch?v=Wl2JDXudGrM) (_slides translation wip_, community contribution apprecciated...)
+- 🇧🇷 Brazilian Portugues - [Vídeo aula](https://www.youtube.com/watch?v=Wl2JDXudGrM) (_slides translation wip_, community contribution apprecciated...)
 
 ## Contibuting with translations
 Would you like to contribute to the Algorand's educational cause? Help me with 
