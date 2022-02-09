@@ -47,6 +47,6 @@ publish the PDF once the translation is finalized.
 All the contributors will be included into the `Credits` slide.
 
 ## Versions
-- English
+- [English](https://github.com/cusma/algorand-school/blob/main/algorand-school-english.pdf)
 - Italian (_wip_, community contribution apprecciated...)
 - Portugues (_wip_, community contribution apprecciated...)
