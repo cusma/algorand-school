@@ -3,7 +3,7 @@ Algorand School is an open slide deck I've built over time during my talks on
 Algorand's blockchain.
 
 The goal of the deck is providing a step-by-step introduction to Algorand's 
-technology, ecosystem and tools, in order to lower learning curve difficulty 
+technology, ecosystem and tools, in order to lower the learning curve difficulty 
 and speed up the learning process. 
 
 Main topics of the Algorand School are:
@@ -32,7 +32,7 @@ the [Algorand Developer Portal](https://developer.algorand.org/), which
 remains the first and most important source of information about Algorand.
 
 ## Contibuting with translations
-Would you like to contribut to the Algorand's educational cause? Help me with 
+Would you like to contribute to the Algorand's educational cause? Help me with 
 the translation!
 
 Just follow the translations guidelines:
