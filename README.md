@@ -36,7 +36,7 @@ remains the first and most important source of information about Algorand.
 - 🇮🇹 Italian (_slides transaltion wip_, community contribution apprecciated...)
 - 🇧🇷 Brazilian Portugues - [Vídeo aula](https://www.youtube.com/watch?v=Wl2JDXudGrM) (_slides translation wip_, community contribution apprecciated...)
 
-## Contibuting with translations
+## Contibuting with translations (PR)
 Would you like to contribute to the Algorand's educational cause? Help me with 
 the translation!
 
@@ -61,7 +61,18 @@ A blockchain is a public ledger of transactional data, distributed across a syst
 I will review the translation, merge it into presentation's source file and 
 publish the PDF once the translation is finalized.
 
+All the translators will be included into the `Credits` slide.
+
+## Errata corrige (Issue)
+Did you catch and error, a typo or any type of misinformation? Please open an **Issue** indicating:
+
+1. 🎲 The slide number
+2. 😓 The error
+3. 💡 A suggestion for a correction
+
 All the contributors will be included into the `Credits` slide.
+
+## Credits to community
 
 Thanks to everyone who forked or starred the repository! Let's learn Algorand together! 📚
 
