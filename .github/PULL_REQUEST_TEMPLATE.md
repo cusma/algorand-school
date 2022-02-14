@@ -2,10 +2,6 @@
 
 _Please indicate the language of the translation:_
 
-# Slides translated
-
-_Please indicate the slides translated:_
-
 # Checklist:
 
 _Please make sure you reviewed the checklist and comply with each requirement:_
@@ -14,3 +10,4 @@ _Please make sure you reviewed the checklist and comply with each requirement:_
 - [ ] Do not translate acronyms and abbreviations (e.g. _AVM_, _VRF_, etc.)
 - [ ] Do not translate `code` sections
 - [ ] Always start a translated text field with `#`
+- [ ] Do not skip slides while translating

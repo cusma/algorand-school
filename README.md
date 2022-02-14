@@ -47,7 +47,8 @@ Just follow the translations guidelines:
 4. Do not translate acronyms and abbreviations (e.g. _AVM_, _VRF_, etc.)
 5. Do not translate `code` sections
 6. Always start a translated text field with `#`
-7. Submit a PR
+7. Do not skip slides while translating
+8. Submit a PR
 
 Example of editing `algorand-school-italian.txt`:
 ```
