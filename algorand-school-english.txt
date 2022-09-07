@@ -329,7 +329,7 @@ Ok, but… how long does it take?
 32
 
 
-Just 4.5 seconds!
+Less than 3.9 seconds!
 33
 
 
@@ -343,21 +343,21 @@ During a network partition in Algorand, the adversary is never able to convince 
 Algorand is able to recover shortly after network partition is resolved and guarantees that new blocks will be generated at the same speed as before the partition.
 
 
-Pure Proof of Stake: the output!
+Pure Proof of Stake: the output pre-upgrade!
 35
 BLOCKS
-> 20M with 0 downtime
+> 23M with 0 downtime
 BLOCKCHAIN SIZE
 ~ 1 TB
 ADDRESSES
-> 23M with ~ 2M monthly active addresses
+> 27M with ~ 2M monthly active addresses
 AVG. BLOCK FINALIZATION
-~ 4,4 sec per block
+~ 4,4 sec per block (pre-upgrade)
 TXNS WEEKLY VOLUME
 ~ 11M transactions (March 2022)
 TPS WEEKLY PEAK
 ~ 1150 transactions per second
-* up to March 2022
+* up to August 2022
 This is the output that such a complex machine has produced so far… We still have to answer to the opening question: “is this machine good at consuming input resources to produce the desired output for which it has been designed for?”
 
 Algorand Layer-1 primitives
