@@ -253,7 +253,7 @@ ALGORAND CONSENSUSPure Proof of Stake (PPoS)
 
 Scalable		6000 TPS, billions of users
 Fast			< 3.9 s per block
-Secure		0 downtime for over 22M blocks
+Secure		0 downtime for over 23M blocks
 Low fees		0.001 ALGO per txn
 No Soft Forks 	prob. < 10-18
 Instant Transaction Finality
@@ -352,11 +352,11 @@ BLOCKCHAIN SIZE
 ADDRESSES
 > 27M with ~ 2M monthly active addresses
 AVG. BLOCK FINALIZATION
-~ 4,4 sec per block (pre-upgrade)
+~ 3.8 sec per block
 TXNS WEEKLY VOLUME
 ~ 11M transactions (March 2022)
 TPS WEEKLY PEAK
-~ 1150 transactions per second
+~ 6000 transactions per second
 * up to August 2022
 This is the output that such a complex machine has produced so far… We still have to answer to the opening question: “is this machine good at consuming input resources to produce the desired output for which it has been designed for?”
 
@@ -1219,24 +1219,12 @@ txn Fee
 int 1000
 <=
 &&
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-txn Amount
-int 42
-==
-txn Amount
-int 77
-==
-||
-&&
 submits...
-PROGRAM
+APPROVAL PROGRAM
 NODE
-APPLICATION
-CREATE
+APPLICATION CALL
 TRANSACTION
+CREATE
 B1
 B2
 B3
@@ -1246,26 +1234,78 @@ BLOCKCHAIN
 APPLICATION ID
 Compiled TEAL Max Size: 2048 bytes (+3 Extra Pages)
 OpCode Max Budget: 700 (x16 Atomic Calls)
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+CLEAR PROGRAM
+The Approval Program is responsible for processing all application calls to the contract, with the exception of the Clear Call. This program is responsible for implementing most of the logic of an Application.
+The Clear Program is used to handle accounts using the Clear Call to remove the smart contract from their balance record.
+State Schema
+The State Schema specifies the memory allocation of the application.
+
+
+Application Minimum Balance requirements
+104
+
+
+Calling Applications
+105
+APPLICATION ID
+GLOBAL STATE
+uint64
+bytes
+APPLICATION CALL
+TRANSACTION
+NO-OP
+APP USER ACCOUNT
+Generic application calls to execute the Approval Program
+APPROVAL PROGRAM
+CLEAR PROGRAM
+LOCAL STATE
+uint64
+bytes
+APPLICATION CALL
+TRANSACTION
+OPTIN
+Application call used by Accounts to participate in an Application enabling Local State usage.
+APPLICATION CALL
+TRANSACTION
+UPDATE
+APPLICATION CALL
+TRANSACTION
+DELETE
+APPLICATION CALL
+TRANSACTION
+CLOSE-OUT
+Application call used by Accounts to close out their participation in an Application. This call can fail based on the TEAL logic, preventing the account from removing the Local State.
+APPLICATION CALL
+TRANSACTION
+CLEAR
+Application call used by Accounts to close out their participation in an Application. This call will always remove the account’s Local State whether the program succeeds or fails.
+Application call to update the application’s Programs
+(if enabled)
+Application call to delete the application
+(if enabled)
+APP ACCOUNT
 
 
 Interacting with Applications
-104
+106
 APPLICATION CALL
 TRANSACTION
 APPLICATION
 (PROGRAM ON-CHAIN)
 APP USER
-ACCOUNT 1
-LOCAL STATE
-
-KYC:    PASSED
+ACCOUNT
+EXTERNAL LOCAL STATE
 APP USER
-ACCOUNT 2
+ACCOUNT 1
 LOCAL STATE
 
 KYC:    PENDING
 APP USER
-ACCOUNT...
+ACCOUNT 2
 LOCAL STATE
 
 KYC:    REJECTED
@@ -1279,13 +1319,61 @@ Arguments
 Assets
 Accounts
 LOG VALUE
+EXTERNAL GLOBAL STATE
+
+INTEREST RATE:    2%
+Up to 256 Inner Transactions
+per App Call
+read / write
+read / write
+read only
+read only
+Application Call Arrays define the state context of the execution
+With Inner Txns App can
+transfer ALGOs,
+interact with ASAs (create, opt-in, transfer, etc…),
+interact with other Apps
+(create, opt-in, call, etc…)
+GROUP TRANSACTION
+
+SCRATCH SPACE
+read only
+write
 
 
-105
+Contract 2 Contract interaction
+107
+APPLICATION
+
+1
+APPLICATION
+
+2
+APPLICATION
+
+i
+APPLICATION
+
+7
+APPLICATION
+
+8
+An application may not call itself, even indirectly. This is referred to as re-entrancy adn is explicitly forbidden. 
+An application may only call into other applications up to a stack depth of 8.
+An application may issue up to 256 inner transactions to increase its budget (max budget of 179.2k!), but the max call budget is shared for all applications in the group.
+
+
+Smart Contract ABI
+108
+The ABI (Application Binary Interface) defines the encoding/decoding of data types and a standard for exposing and invoking methods in a Smart Contract. The specification is defined in ARC-4.
+At a high level, the ABI allows contracts to define an API so clients know exactly what the Smart Contract is expecting to be passed (like a “Smart Contract Swagger”).
+
+
+109
 TEALAVM assembly-like language
 
 Smart Signature Example
-106
+110
 Suppose we want to develop a Smart Signature that approves a transaction if and only if:
 
 is “Payment” type transaction;
@@ -1299,7 +1387,7 @@ Where do we start?
 
 
 Smart Signature as “Transaction Observer”
-107
+111
 Smart Signatures can be defined as a “transactions’ observers”: programs that meticulously check all fields in the transaction (or in a group of transactions) that intend to “approve” or “reject” based on TEAL logic.
 
 To translate those 6 semantically defined example’s conditions into TEAL we need to check which transaction fields are going to be controlled by Smart Signature’s logic.
@@ -1310,7 +1398,7 @@ Let's start with the translation...
 
 
 Translating conditions into TEAL…
-108
+112
 is “Payment” type transaction;
 txn TypeEnum
 int 1
@@ -1318,7 +1406,7 @@ int 1
 1
 
 
-109
+113
 the receiver is a specific “ADDR”;
 txn Receiver
 addr AOC7...
@@ -1327,7 +1415,7 @@ addr AOC7...
 Translating conditions into TEAL…
 
 
-110
+114
 fees are less or equal to “1000 microALGO”;
 txn Fee
 int 1000
@@ -1336,7 +1424,7 @@ int 1000
 Translating conditions into TEAL…
 
 
-111
+115
 first argument is equal to “bianconiglio”;
 arg 0
 byte base64 "YmlhbmNvbmlnbGlv"
@@ -1345,7 +1433,7 @@ byte base64 "YmlhbmNvbmlnbGlv"
 Translating conditions into TEAL…
 
 
-112
+116
 amount is  equal to “42 ALGO”;
 txn Amount
 int 42000000
@@ -1354,7 +1442,7 @@ int 42000000
 Translating conditions into TEAL…
 
 
-113
+117
 amount is  equal to “77 ALGO”;
 txn Amount
 int 77000000
@@ -1363,7 +1451,7 @@ int 77000000
 Translating conditions into TEAL…
 
 
-114
+118
 Logic connectors…
 txn TypeEnum
 int 1
@@ -1402,7 +1490,7 @@ STACK
 6
 
 
-115
+119
 Logic connectors…
 txn TypeEnum
 int 1
@@ -1444,138 +1532,6 @@ This is probably the most complex phase in TEAL programming, because you need to
 This phase is drastically simplified with the use of PyTEAL, Python binding for TEAL, which automatically performs this concatenation, saving us the effort of thinking about the state of the stack.
 
 
-116
-Execution…
-txn TypeEnum
-int 1
-==
-txn Receiver
-addr AOC7...
-==
-&&
-txn Fee
-int 1000
-<=
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-&&
-txn Amount
-int 42000000
-==
-txn Amount
-int 77000000
-==
-||
-&&
-1
-STACK
-[...]
-[...]
-[...]
-[...]
-
-
-117
-Execution…
-txn TypeEnum
-int 1
-==
-txn Receiver
-addr AOC7...
-==
-&&
-txn Fee
-int 1000
-<=
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-&&
-txn Amount
-int 42000000
-==
-txn Amount
-int 77000000
-==
-||
-&&
-1
-1
-STACK
-[...]
-[...]
-[...]
-
-
-118
-Execution…
-txn TypeEnum
-int 1
-==
-txn Receiver
-addr AOC7...
-==
-&&
-txn Fee
-int 1000
-<=
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-&&
-txn Amount
-int 42000000
-==
-txn Amount
-int 77000000
-==
-||
-&&
-1
-1
-[...]
-[...]
-[...]
-STACK
-
-
-119
-Execution…
-txn TypeEnum
-int 1
-==
-txn Receiver
-addr AOC7...
-==
-&&
-txn Fee
-int 1000
-<=
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-&&
-txn Amount
-int 42000000
-==
-txn Amount
-int 77000000
-==
-||
-&&
-1
-STACK
-[...]
-[...]
-[...]
-[...]
-
-
 120
 Execution…
 txn TypeEnum
@@ -1601,12 +1557,12 @@ int 77000000
 ==
 ||
 &&
-[...]
-[...]
-STACK
 1
+STACK
 [...]
-AOC7...
+[...]
+[...]
+[...]
 
 
 121
@@ -1634,12 +1590,12 @@ int 77000000
 ==
 ||
 &&
-[...]
-[...]
-STACK
 1
-AOC7...
-AOC7...
+1
+STACK
+[...]
+[...]
+[...]
 
 
 122
@@ -1667,11 +1623,11 @@ int 77000000
 ==
 ||
 &&
-[...]
-[...]
 1
-AOC7...
-AOC7...
+1
+[...]
+[...]
+[...]
 STACK
 
 
@@ -1702,7 +1658,7 @@ int 77000000
 &&
 1
 STACK
-1
+[...]
 [...]
 [...]
 [...]
@@ -1733,12 +1689,12 @@ int 77000000
 ==
 ||
 &&
-1
+[...]
+[...]
 STACK
 1
 [...]
-[...]
-[...]
+AOC7...
 
 
 125
@@ -1766,12 +1722,12 @@ int 77000000
 ==
 ||
 &&
-1
+[...]
+[...]
 STACK
-[...]
-[...]
-[...]
-[...]
+1
+AOC7...
+AOC7...
 
 
 126
@@ -1801,10 +1757,10 @@ int 77000000
 &&
 [...]
 [...]
-STACK
 1
-[...]
-1000
+AOC7...
+AOC7...
+STACK
 
 
 127
@@ -1832,12 +1788,12 @@ int 77000000
 ==
 ||
 &&
-[...]
-[...]
+1
 STACK
 1
-1000
-1000
+[...]
+[...]
+[...]
 
 
 128
@@ -1865,12 +1821,12 @@ int 77000000
 ==
 ||
 &&
-[...]
-[...]
+1
 STACK
 1
-1000
-1000
+[...]
+[...]
+[...]
 
 
 129
@@ -1900,7 +1856,7 @@ int 77000000
 &&
 1
 STACK
-1
+[...]
 [...]
 [...]
 [...]
@@ -1935,8 +1891,8 @@ int 77000000
 [...]
 STACK
 1
-1
-bianconiglio
+[...]
+1000
 
 
 131
@@ -1964,12 +1920,12 @@ int 77000000
 ==
 ||
 &&
-1
+[...]
 [...]
 STACK
 1
-bianconiglio
-bianconiglio
+1000
+1000
 
 
 132
@@ -1997,12 +1953,12 @@ int 77000000
 ==
 ||
 &&
-1
+[...]
 [...]
 STACK
 1
-bianconiglio
-bianconiglio
+1000
+1000
 
 
 133
@@ -2035,7 +1991,7 @@ STACK
 1
 [...]
 [...]
-1
+[...]
 
 
 134
@@ -2063,12 +2019,12 @@ int 77000000
 ==
 ||
 &&
-1
+[...]
+[...]
 STACK
 1
-[...]
-[...]
 1
+bianconiglio
 
 
 135
@@ -2097,11 +2053,11 @@ int 77000000
 ||
 &&
 1
+[...]
 STACK
 1
-[...]
-[...]
-[...]
+bianconiglio
+bianconiglio
 
 
 136
@@ -2130,11 +2086,11 @@ int 77000000
 ||
 &&
 1
+[...]
 STACK
 1
-[...]
-[...]
-[...]
+bianconiglio
+bianconiglio
 
 
 137
@@ -2164,10 +2120,10 @@ int 77000000
 &&
 1
 STACK
+1
 [...]
 [...]
-[...]
-[...]
+1
 
 
 138
@@ -2195,12 +2151,12 @@ int 77000000
 ==
 ||
 &&
-42000000
+1
 STACK
 1
 [...]
 [...]
-[...]
+1
 
 
 139
@@ -2228,12 +2184,12 @@ int 77000000
 ==
 ||
 &&
-42000000
-42000000
-STACK
-[...]
-[...]
 1
+STACK
+1
+[...]
+[...]
+[...]
 
 
 140
@@ -2261,12 +2217,12 @@ int 77000000
 ==
 ||
 &&
-42000000
-42000000
-[...]
-[...]
 1
 STACK
+1
+[...]
+[...]
+[...]
 
 
 141
@@ -2296,7 +2252,7 @@ int 77000000
 &&
 1
 STACK
-1
+[...]
 [...]
 [...]
 [...]
@@ -2331,7 +2287,7 @@ int 77000000
 STACK
 1
 [...]
-1
+[...]
 [...]
 
 
@@ -2361,6 +2317,138 @@ int 77000000
 ||
 &&
 42000000
+42000000
+STACK
+[...]
+[...]
+1
+
+
+144
+Execution…
+txn TypeEnum
+int 1
+==
+txn Receiver
+addr AOC7...
+==
+&&
+txn Fee
+int 1000
+<=
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+&&
+txn Amount
+int 42000000
+==
+txn Amount
+int 77000000
+==
+||
+&&
+42000000
+42000000
+[...]
+[...]
+1
+STACK
+
+
+145
+Execution…
+txn TypeEnum
+int 1
+==
+txn Receiver
+addr AOC7...
+==
+&&
+txn Fee
+int 1000
+<=
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+&&
+txn Amount
+int 42000000
+==
+txn Amount
+int 77000000
+==
+||
+&&
+1
+STACK
+1
+[...]
+[...]
+[...]
+
+
+146
+Execution…
+txn TypeEnum
+int 1
+==
+txn Receiver
+addr AOC7...
+==
+&&
+txn Fee
+int 1000
+<=
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+&&
+txn Amount
+int 42000000
+==
+txn Amount
+int 77000000
+==
+||
+&&
+42000000
+STACK
+1
+[...]
+1
+[...]
+
+
+147
+Execution…
+txn TypeEnum
+int 1
+==
+txn Receiver
+addr AOC7...
+==
+&&
+txn Fee
+int 1000
+<=
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+&&
+txn Amount
+int 42000000
+==
+txn Amount
+int 77000000
+==
+||
+&&
+42000000
 77000000
 STACK
 1
@@ -2368,7 +2456,7 @@ STACK
 1
 
 
-144
+148
 Execution…
 [...]
 1
@@ -2401,141 +2489,9 @@ int 77000000
 STACK
 
 
-145
-Execution…
-0
-txn TypeEnum
-int 1
-==
-txn Receiver
-addr AOC7...
-==
-&&
-txn Fee
-int 1000
-<=
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-&&
-txn Amount
-int 42000000
-==
-txn Amount
-int 77000000
-==
-||
-&&
-STACK
-1
-[...]
-[...]
-1
-
-
-146
-Execution…
-0
-txn TypeEnum
-int 1
-==
-txn Receiver
-addr AOC7...
-==
-&&
-txn Fee
-int 1000
-<=
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-&&
-txn Amount
-int 42000000
-==
-txn Amount
-int 77000000
-==
-||
-&&
-STACK
-1
-[...]
-[...]
-1
-
-
-147
-Execution…
-1
-txn TypeEnum
-int 1
-==
-txn Receiver
-addr AOC7...
-==
-&&
-txn Fee
-int 1000
-<=
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-&&
-txn Amount
-int 42000000
-==
-txn Amount
-int 77000000
-==
-||
-&&
-STACK
-1
-[...]
-[...]
-[...]
-
-
-148
-Execution…
-1
-txn TypeEnum
-int 1
-==
-txn Receiver
-addr AOC7...
-==
-&&
-txn Fee
-int 1000
-<=
-arg 0
-byte base64 "YmlhbmNvbmlnbGlv"
-==
-&&
-&&
-txn Amount
-int 42000000
-==
-txn Amount
-int 77000000
-==
-||
-&&
-STACK
-1
-[...]
-[...]
-[...]
-
-
 149
 Execution…
-1
+0
 txn TypeEnum
 int 1
 ==
@@ -2560,13 +2516,145 @@ int 77000000
 ||
 &&
 STACK
+1
 [...]
 [...]
-[...]
-[...]
+1
 
 
 150
+Execution…
+0
+txn TypeEnum
+int 1
+==
+txn Receiver
+addr AOC7...
+==
+&&
+txn Fee
+int 1000
+<=
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+&&
+txn Amount
+int 42000000
+==
+txn Amount
+int 77000000
+==
+||
+&&
+STACK
+1
+[...]
+[...]
+1
+
+
+151
+Execution…
+1
+txn TypeEnum
+int 1
+==
+txn Receiver
+addr AOC7...
+==
+&&
+txn Fee
+int 1000
+<=
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+&&
+txn Amount
+int 42000000
+==
+txn Amount
+int 77000000
+==
+||
+&&
+STACK
+1
+[...]
+[...]
+[...]
+
+
+152
+Execution…
+1
+txn TypeEnum
+int 1
+==
+txn Receiver
+addr AOC7...
+==
+&&
+txn Fee
+int 1000
+<=
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+&&
+txn Amount
+int 42000000
+==
+txn Amount
+int 77000000
+==
+||
+&&
+STACK
+1
+[...]
+[...]
+[...]
+
+
+153
+Execution…
+1
+txn TypeEnum
+int 1
+==
+txn Receiver
+addr AOC7...
+==
+&&
+txn Fee
+int 1000
+<=
+arg 0
+byte base64 "YmlhbmNvbmlnbGlv"
+==
+&&
+&&
+txn Amount
+int 42000000
+==
+txn Amount
+int 77000000
+==
+||
+&&
+STACK
+[...]
+[...]
+[...]
+[...]
+
+
+154
 Conclusion…
 1
 txn TypeEnum
@@ -2600,17 +2688,17 @@ STACK
 True
 
 
-151
+155
 PyTEALWriting Smart Contracts with Python
 Credits to Jason Paulos for the PyTEAL presentation
 
 What’s PyTEAL?
-152
+156
 PyTEAL is a Python language binding for Algorand Virtual Machine.
 PyTEAL allows Smart Contracts and Smart Signatures to be written in Python and then compiled to TEAL.
 
 
-153
+157
 It’s easier with PyTEAL!
 TEAL Source Code
 txn Receiver
@@ -2641,12 +2729,12 @@ COMPILE...
 AVM bytecode
 
 
-154
+158
 Smart Signature written in PyTEAL
 
 
 PyTEAL Basics - Intro
-155
+159
 PyTEAL expressions represent an abstract syntax tree (AST)
 You’re writing Python code that produces TEAL code.
 from pyteal import *
@@ -2656,7 +2744,7 @@ teal_source = compileTeal(program, mode=Mode.Application, version=5)
 
 
 PyTEAL Basics - Types (1/2)
-156
+160
 Two basic types:
 uint64
 byte strings
@@ -2667,7 +2755,7 @@ z = Bytes("base16", "05")
 
 
 PyTEAL Basics - Types (2/2)
-157
+161
 Conversion between types
 Itob - integer to bytes (8-byte big endian)
 Btoi - bytes to integer
@@ -2676,7 +2764,7 @@ Btoi(z) # produces the integer 5
 
 
 PyTEAL Basics - Math operators
-158
+162
 Python math operators
 i = Int(10)
 j = i * Int(2) + Int(1)
@@ -2684,7 +2772,7 @@ k = And(Int(1), Or(Int(1), Int(0)))
 
 
 PyTEAL Basics - Byte string manipulation
-159
+163
 Byte string manipulation
 x = Bytes("content")
 y = Concat(Bytes("example "), x) # "example content"
@@ -2692,7 +2780,7 @@ z = Substring(y, Int(2), Len(y)) # "ample content"
 
 
 PyTEAL Basics - Crypto utilities
-160
+164
 Built-in crypto utilities
 h_sha256 = Sha256(z)
 h_sha512_256 = Sha512_256(z)
@@ -2700,7 +2788,7 @@ h_keccak = Keccak256(z)
 
 
 PyTEAL Basics - Fields (1/3)
-161
+165
 Fields from the current transaction
 Txn.sender()
 Txn.accounts.length()
@@ -2711,7 +2799,7 @@ Txn.group_index()
 
 
 PyTEAL Basics - Fields (2/3)
-162
+166
 Fields from transactions in the current atomic group
 Gtxn[0].sender()
 Gtxn[Txn.group_index() - Int(1)].sender()
@@ -2719,7 +2807,7 @@ Gtxn[Txn.group_index() - Int(1)].accounts[2]
 
 
 PyTEAL Basics - Fields (3/3)
-163
+167
 Fields from execution context
 Global.group_size()
 Global.round() # current round number
@@ -2727,13 +2815,13 @@ Global.latest_timestamp() # UNIX timestamp of last round
 
 
 PyTEAL Basics - Logs
-164
+168
 Log publicly viewable messages to the chain
 	Log(Bytes("message"))
 
 
 PyTEAL Basics - State (1/2)
-165
+169
 Global - one instance per application
 App.globalPut(Bytes("status"), Bytes("active")) # write to global key "status"
 
@@ -2743,7 +2831,7 @@ App.globalDel(Bytes("status")) # delete global key "status"
 
 
 PyTEAL Basics - State (2/2)
-166
+170
 Local - one instance per opted-in account per application
 App.localPut(Txn.sender(), Bytes("level"), Int(1)) # write to sender's local key "level"
 App.localPut(Txn.accounts[1], Bytes("level"), Int(2))  # write to other account's local key "level"
@@ -2754,7 +2842,7 @@ App.localDel(Txn.sender(), Bytes("level"))  # delete sender's local key "level"
 
 
 PyTEAL Basics - Control Flow (1/5)
-167
+171
 Approve the transaction and immediately exit
 Approve()
 Reject the transaction and immediately exit
@@ -2762,7 +2850,7 @@ Reject()
 
 
 PyTEAL Basics - Control Flow (2/5)
-168
+172
 Multiple expressions can be joined into a sequence
 program = Seq(
    App.globalPut(Bytes("count"), App.globalGet(Bytes("count")) + Int(1)),
@@ -2771,7 +2859,7 @@ program = Seq(
 
 
 PyTEAL Basics - Control Flow (3/5)
-169
+173
 Basic conditions can be expressed with If, Then, Else, ElseIf
 program = Seq(
    If(App.globalGet(Bytes("count")) == Int(100))
@@ -2787,7 +2875,7 @@ program = Seq(
 
 
 PyTEAL Basics - Control Flow (4/5)
-170
+174
 Larger conditions can be expressed with Cond
 program = Cond(
    [Txn.application_id() == Int(0), on_create],
@@ -2801,7 +2889,7 @@ program = Cond(
 
 
 PyTEAL Basics - Control Flow (5/5)
-171
+175
 Loops can be expressed with For and While
 i = ScratchVar(TealType.uint64)
 
@@ -2815,7 +2903,7 @@ on_create = Seq(
 
 
 PyTEAL Basics - Subroutines (1/2)
-172
+176
 Sections of code can be put into subroutines (Python decorators)
 @Subroutine(TealType.uint64)
 def isEven(i):
@@ -2825,7 +2913,7 @@ App.globalPut(Bytes("value_is_even"), isEven(Int(10)))
 
 
 PyTEAL Basics - Subroutines (2/2)
-173
+177
 Recursion is allowed
 @Subroutine(TealType.uint64)
 def recursiveIsEven(i):
@@ -2839,13 +2927,13 @@ def recursiveIsEven(i):
 
 
 PyTEAL Basics - Inner Transactions (1/3)
-174
+178
 Every application has control of an account
 Global.current_application_address()
 
 
 PyTEAL Basics - Inner Transactions (2/3)
-175
+179
 Applications can send transactions from this account
 Seq(
    InnerTxnBuilder.Begin(),
@@ -2861,7 +2949,7 @@ Seq(
 
 
 PyTEAL Basics - Inner Transactions (3/3)
-176
+180
 appAddr = Global.current_application_address()
 Seq(
    InnerTxnBuilder.Begin(),
@@ -2881,15 +2969,13 @@ Seq(
 )
 
 
-Smart Contract ABI
-177
-The ABI (Application Binary Interface) defines the encoding/decoding of data types and a standard for exposing and invoking methods in a Smart Contract. The specification is defined in ARC-4.
-At a high level, the ABI allows contracts to define an API so clients know exactly what the Smart Contract is expecting to be passed (like a “Smart Contract Swagger”).
+PyTeal ABI Support
+181
 PyTeal natively supports the ABI standard: it handles methods signatures and ABI JSON auto-generation.
 
 
 Beaker: Smart Contract development framework
-178
+182
 Beaker improves the PyTeal Smart Contract development experience, making it simpler, cleaner and faster both to write and debug:
 Provides a standard way to organize code by using a Application class with @external (methods) and @internal (subroutine) decorators, with utilities for call authorization;
 Provides an ApplicationClient to deal with common needs like creating/opting-in to/calling methods;
@@ -2898,7 +2984,7 @@ Improves the pc=xxx error message using the SourceMap endpoint during compilatio
 
 
 A pythonic Algorand stack
-179
+183
 Algorand Python SDK
 PyTEAL & Beaker
 PyTest for Smart Contracts unit-tests and e2e-tests
@@ -2908,15 +2994,15 @@ PyCharm IDE & AlgoDEA plug-in
 
 
 “Zero to Hero PyTEAL” crash course
-180
+184
 Join and learn in 12 lessons!
 
 
-181
+185
 DAPP EXAMPLE & USE CASESExample: zero coupon bond
 
 Zero coupon bond
-182
+186
 Bondholder purchase a bond (only if KYC has been verified)
 Bond application checks for bond’s maturity
 Bond Issuer re-pays the Bondholder at given rate
@@ -2927,7 +3013,7 @@ ACCOUNT
 BOND ESCROW
 CONTRACT ACCOUNT
 Zero coupon bond
-183
+187
 Bondholder purchase a bond (only if KYC has been passed)
 BOND
 APPLICATION
@@ -2952,7 +3038,7 @@ reads
 BONDHOLDER
 ACCOUNT
 Zero coupon bond
-184
+188
 Bond application checks for bond’s maturity
 BOND ESCROW
 CONTRACT ACCOUNT
@@ -2969,7 +3055,7 @@ APPLICATION
 
 
 Zero coupon bond
-185
+189
 Bond Issuer re-pays the Bondholder at given rate
 ATOMIC TRANSACTION
 
