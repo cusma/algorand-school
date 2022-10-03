@@ -34,7 +34,12 @@ remains the first and most important source of information about Algorand.
 ## Versions
 - 🇺🇸 [English](https://github.com/cusma/algorand-school/blob/main/algorand-school-english.pdf)
 - 🇮🇹 Italian (_slides transaltion wip_, community contribution apprecciated...)
-- 🇧🇷 Brazilian Portugues - [Vídeo aula](https://www.youtube.com/watch?v=Wl2JDXudGrM) (_slides translation wip_, community contribution apprecciated...)
+- 🇧🇷 Brazilian Portugues (_slides translation wip_, community contribution apprecciated...)
+
+## Videos
+- 🇺🇸 [Algorand Efficiency](https://www.youtube.com/watch?v=e8s8Ui8vDaY) - Understanding Algorand's working principles and its efficiency.
+- 🇺🇸 [Introduction to AVM and Smart Contracts](https://www.youtube.com/watch?v=fTAPLiPcj28) - Introduction to the Algorand Virtual Machine architecture and Algorand Smart Contracts (aka Applications).
+- 🇧🇷 [Introdução a AVM, nodes e Smart Contracts em PyTeal](https://www.youtube.com/watch?v=Wl2JDXudGrM)
 
 ## Contibuting with translations (PR)
 Would you like to contribute to the Algorand's educational cause? Help me with 
