@@ -1,6 +1,6 @@
 # Algorand School
 Algorand School is an open slide deck I've built over time during my talks on 
-Algorand's blockchain.
+Algorand's blockchain with the help of Algorand colleagues.
 
 The goal of the deck is providing a step-by-step introduction to Algorand's 
 technology, ecosystem and tools, in order to lower the learning curve difficulty 
@@ -10,21 +10,26 @@ Main topics of the Algorand School:
 
 - 🕸 Understanding Algorand Consensus and Algorand Networks
 - 🛠 Familiarizing with the Algorand Nodes and Dev Tools
-- 🤝 Shedding light on Algorand's Account and Transactions
+- 🤝 Shedding light on Algorand's features (Account, Transactions, ASAs, etc.)
 - 🤖 Clarifying how to develop dApps on the Algorand Virtual Machine
 
 ### Contents
-1. Algorand Consensus
-2. Algorand Decentralized Governance
-3. Algorand Networks
-4. Algorand Transactions
-5. Algorand Accounts
-6. Algorand Virtual Machine
-7. Algorand Smart Contracts on Layer-1
-8. Smart Signatures & Smart Contracts
-9. TEAL
-10. PyTEAL (credits to [@jasonpaulos](https://github.com/jasonpaulos) for the contents)
-11. dApp Example & Use Cases
+1. Blockchain as an infrastructure
+2. Analog properties for Digital things
+3. Algorand Consensus
+4. Algorand Sustainability
+5. Algorand Networks
+6. Algorand Interoperability
+7. Algorand Transactions
+8. Algorand Accounts
+9. Algorand Standard Assets
+10. Algorand Virtual Machine
+11. Algorand Smart Contracts on Layer-1
+12. Smart Signatures & Smart Contracts
+13. TEAL
+14. PyTEAL (credits to [@jasonpaulos](https://github.com/jasonpaulos) and [@matteojug](https://github.com/matteojug))
+15. Algorand ABI (credits to [@deanstef](https://github.com/deanstef))
+16. Beaker (credits to [@iskysun96](https://github.com/iskysun96))
 
 #### Note
 Almost all the contents presented in the Algorand School derive directly from 
@@ -37,9 +42,11 @@ remains the first and most important source of information about Algorand.
 - 🇧🇷 Brazilian Portugues (_slides translation wip_, community contribution apprecciated...)
 
 ## Videos
-- 🇺🇸 [Algorand Efficiency](https://www.youtube.com/watch?v=e8s8Ui8vDaY) - Understanding Algorand's working principles and its efficiency.
-- 🇺🇸 [Introduction to AVM and Smart Contracts](https://www.youtube.com/watch?v=fTAPLiPcj28) - Introduction to the Algorand Virtual Machine architecture and Algorand Smart Contracts (aka Applications).
-- 🇧🇷 [Introdução a AVM, nodes e Smart Contracts em PyTeal](https://www.youtube.com/watch?v=Wl2JDXudGrM)
+- 🇺🇸 [Algorand Efficiency](https://www.youtube.com/watch?v=e8s8Ui8vDaY) - Understanding Algorand's working principles and its efficiency (with [@cusma](https://twitter.com/cusma_b)).
+- 🇺🇸 [Introduction to AVM and Smart Contracts](https://www.youtube.com/watch?v=fTAPLiPcj28) - Introduction to the Algorand Virtual Machine architecture and Algorand Smart Contracts (aka Applications) (with [@cusma](https://twitter.com/cusma_b)).
+- 🇺🇸 [Introduction to PyTeal](...) - Introduction to PyTeal, a Python framework to develop Smart Contract on Algorand (with [@matteojug](https://twitter.com/matteojug)).
+- 🇺🇸 [PyTeal ABI Smart Contracts](...) - Using PyTeal to develop _ABI-compliant_ Smart Contracts on Algorand. Final live coding section (with [@_deanste](https://twitter.com/_deanste)).
+- 🇧🇷 [Introdução a AVM, nodes e Smart Contracts em PyTeal](https://www.youtube.com/watch?v=Wl2JDXudGrM) - Introdução à tecnologia Algorand, redes e nós Algorand, ferramentas de desenvolvimento e a Máquina Virtual Alagorand. Sessão final de live-coding de Smart Contracts em PyTeal (com [@cusma](https://twitter.com/cusma_b)).
 
 ## Contibuting with translations (PR)
 Would you like to contribute to the Algorand's educational cause? Help me with 

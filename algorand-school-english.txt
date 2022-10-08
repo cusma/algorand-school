@@ -3,10 +3,10 @@ Algorand School
 2022
 
 
-Cosimo Bassi
-Solutions Architect at Algorand Inc.
 
-cosimo.bassi@algorand.com
+
+
+
 
 Open Source: github.com/cusma/algorand-school
 
@@ -20,31 +20,43 @@ Blockchain as an infrastructure
 Analog properties for Digital things
 Algorand Consensus
 Algorand Sustainability
-Algorand Decentralized Governance
 Algorand Networks
 Algorand Interoperability
 Algorand Transactions
 Algorand Accounts
-Algorand Standard Assets
+Algorand Standard Assets & ARCs
 Algorand Virtual Machine
 Algorand Smart Contracts on Layer-1
 Smart Signatures & Smart Contracts
 TEAL
-PyTEAL & ABI & Beaker
-dApp Example & Use Cases
+PyTEAL
+Algorand ABI
+Beaker
 
 4
-BLOCKCHAIN AS INFRASTRUCTUREFor native digital value
+Introduction to Algorand
+An efficient public infrastructure for digital value
+
+
+
+
+
+
+Cosimo Bassi
+Solutions Architect at Algorand
+
+cosimo.bassi@algorand.com
+
 
 Blockchain is a digital infrastructure for value
-5
+6
 "The ability to create something which is not duplicable in the digital world has enormous value."
 
 Eric Schmidt
 
 
 The infrastructure trilemma
-6
+7
 TRILEMMA
 2
 3
@@ -56,7 +68,7 @@ Public or private? Who has the control? Duty and responsibility? Aligned incenti
 
 
 The problem of native digital value
-7
+8
 In the digital age
 everything can be represented in bits 
 as a string of 0 and 1
@@ -68,11 +80,11 @@ SCARCITY, AUTHENTICITY, UNICITY
 
 
 How to build such infrastructure? Protocol is the answer
-8
+9
 Just like TCP/IP is the foundational protocol for the modern Internet infrastructure, we will solve the problem through an protocol.
 
 This is not just an information technology problem
-9
+10
 DISTRIBUTED SYSTEMS
 CRYPTOGRAPHY
 GAME THEORY
@@ -84,7 +96,7 @@ LEDGER
 Distributed systems and cryptography are elements of the communication infrastructure. We need a third element: game theory.
 
 Who controls the system? Nobody… everybody!
-10
+11
 PAST
 FUTURE
 DISTRIBUTED SYSTEMS
@@ -92,7 +104,7 @@ No absolute power, no single point of failure.
 
 
 Don’t trust, verify!
-11
+12
 Nobody can break the rules…
 and
 …everybody can verify.
@@ -100,20 +112,20 @@ CRYPTOGRAPHY
 
 
 Align incentives: collective self-protecting system
-12
+13
 GAME THEORY
 Equilibrium in which attacking the system is less convenient than protecting it.
 
 Cost of the attack: make malicious behaviours expensive.
 
 
-13
+14
 ANALOG PROPERTIES
 FOR DIGITAL THINGS
 Consensus as “law of Physics” for digital world
 
 Who owns what? Let’s write it down!
-14
+15
 A blockchain is a public ledger of transactional data.
 World's first writing — cuneiform — traces its beginnings back to an ancient system of accounting.
 WHO
@@ -124,19 +136,19 @@ WHAT
 Writing systems: from prehistory to history of humankind.
 
 More copies are better than one!
-15
+16
 Distributed and replicated across a system of multiple nodes in a network.
 All “ledger keepers” should work together, using the same set rules, to verify the transactions to add to each copy of the finalized ledger. 
 
 
-16
+17
 Atoms can’t be copy & pasted and are obliged to follow the arrow of time!
 Bits can be copy & pasted and are not obliged to follow the arrow of time!
 Entropy, irreversibility and the arrow of time
 In a distributed system is hard to ensure that the information follows a consequential time. Also, the arrow of time could bypassed reverting transactions. The ledger of information must respect a precise history and must not allow arbitrary creation, duplication or deletion of information. 
 
 A chain of transactions organized in blocks
-17
+18
 The “block” refers to a set of transactions that are proposed and verified by the other nodes and eventually added to the ledger (no copy & paste).
 The “chain” refers to the fact that each block of transactions contains proof (a cryptographic hash) of what was in the previous block (arrow of time).
 
@@ -148,7 +160,7 @@ Can transactions be reverted or modified ex-post? No! Dura lex, sed lex!
 
 
 A distributed state machine
-18
+19
 A machine
 The evolution of the states of the system is determined…
 
@@ -172,7 +184,7 @@ TRANSACTION
 The more complex the state transition the more power I consume: adding 1 transaction per month is easy, executing thousands of smart contracts on the AVM is complicated.
 
 The responsibility of correct information
-19
+20
 Margaret Hamilton in 1969, standing next to listings of the software she and her MIT team produced for the Apollo project.
 BLOCK PROPOSER
 GENESIS BLOCK
@@ -185,7 +197,7 @@ With a set of software rules, called Consensus Protocol that evolves the state o
 Paleo-computing: no IDE, no syntax highlighting, handwritten code (value of conciseness).
 
 The architecture of consensus
-20
+21
 Temple of Concordia
 Valley of Temples (Agrigento), 440-430 B.C.
 How to choose the proposer for the next block for a public and permissionless blockchain?
@@ -200,14 +212,14 @@ In ancient Roman religion, Concordia is the goddess who embodies agreement in so
 This tells us a lot about the value of such a civilization!
 
 Proof of Work consensus mechanism
-21
+22
 Miners compete with each other to append the next block and earn a reward for the effort, fighting to win an expensive computational battle.
 The more computational power, the higher the probability of being elected as block proposer.
 PoW
 
 
 Proof of Work limits
-22
+23
 Huge electrical consumption
 
 Concentration of governance in few mining farms
@@ -216,14 +228,14 @@ Soft-forking of the blockchain
 
 
 Proof of Stake consensus mechanism
-23
+24
 Network participants show their commitment and interest in keeping the ledger safe and secure proving the ownership of value stored on the ledger itself.
 
 The higher the skin in the game the higher the probability of being elected as block proposer.
 
 
 Proof of Stake limits
-24
+25
 CRITICAL ISSUES
 BONDED PROOF OF STAKE
 Validators bind their stake, to show their commitment in validating and appending a new block. Misbehaviors are punished.
@@ -238,7 +250,7 @@ DPoS
 It’s like playing Battleship knowing the coordinates of adversary in advance.
 
 Is the Blockchain Trilemma unsolvable?
-25
+26
 TRILEMMA
 2
 3
@@ -248,7 +260,7 @@ SCALABILITY
 DECENTRALIZATION
 
 
-26
+27
 ALGORAND CONSENSUSPure Proof of Stake (PPoS)
 
 Scalable		6000 TPS, billions of users
@@ -264,7 +276,7 @@ No minimum stake
 Secure with respect DDoS
 Network Partitioning resilience
 Algorand PPoS Consensus
-27
+28
 Silvio Micali  Algorand Founder
 Professor MIT, Turing Award, Gödel Prize
 Digital Signatures, Probabilistic Encryption, Zero-Knowledge Proofs,
@@ -273,7 +285,7 @@ Verifiable Random Functions and other primitives of modern cryptography.
 Flat fee is very powerful for business models: given a users base, an estimation of users activity (tx/day) a business team can foresee the costs and hedge the on-chain resources.
 
 Tamper-proof, unique and verifiable dices
-28
+29
 
 
 
@@ -287,7 +299,7 @@ Dices are publicly verifiable, everybody can read the results of a roll!
 
 
 Who chose the next block?
-29
+30
 VRF
 VRF
 VRF
@@ -301,7 +313,7 @@ The winner is revealed in a safe and verifiable way only after winning the dice 
 
 
 A glimpse on “simplified” VRF sortition
-30
+31
 A secret key (SK) / public verification key (VK) pair is associated with each ALGO in the account
 For each new round r of the consensus protocol a threshold L(r) is defined
 Each ALGO in the account performs a VRF, using its own secret key (SK), to generate:
@@ -312,7 +324,7 @@ Others node can use the public verification key (VK) to verify, through ⍴SK(se
 
 
 Pure Proof of Stake, in short
-31
+32
 Through the cryptographic lottery, an online account is elected with probability directly proportional to its stake: each ALGO corresponds to an attempt to win the lottery!
 
 
@@ -326,15 +338,15 @@ Each round of the consensus protocol appends a new block in the blockchain:
 
 
 Ok, but… how long does it take?
-32
-
-
-Less than 3.9 seconds!
 33
 
 
-Pure Proof of Stake security
+Less than 3.9 seconds!
 34
+
+
+Pure Proof of Stake security
+35
 Algorand’s decentralized Byzantine consensus protocol can tolerate an arbitrary number of malicious users as long as honest users hold a super majority of the total stake in the system.
 The adversary does not know which users he should corrupt.
 The adversary realizes which users are selected too late to benefit from attacking them. 
@@ -344,7 +356,7 @@ Algorand is able to recover shortly after network partition is resolved and guar
 
 
 Pure Proof of Stake: the output pre-upgrade!
-35
+36
 BLOCKS
 > 23M with 0 downtime
 BLOCKCHAIN SIZE
@@ -361,7 +373,7 @@ TPS WEEKLY PEAK
 This is the output that such a complex machine has produced so far… We still have to answer to the opening question: “is this machine good at consuming input resources to produce the desired output for which it has been designed for?”
 
 Algorand Layer-1 primitives
-36
+37
 
 Algorand Standard Assets (ASA)
 
@@ -388,7 +400,7 @@ POST-QUANTUM SECURE
 
 
 What does execution on Layer-1 mean?
-37
+38
 B1
 B2
 ...
@@ -416,7 +428,7 @@ up to 25000 txn/block
 Each complex system is characterised by a “natural pulsation”. For electrical networks is the grid’s frequency, for automated assembly lines is the production tack-time. We, humans, are complex systems, our natural pulsations is the heartbeat. Block time is Algorand’s heartbeat!
 
 What does execution on Layer-1 mean?
-38
+39
 Smart Contracts are executed “at consensus level”
 Benefit from network's speed, security, and scalability
 Fast trustless execution (~3.8 seconds per block)
@@ -427,26 +439,26 @@ Safe high level languages (PyTeal, Reach, Clarity)
 Low energy consumption
 
 
-39
+40
 ALGORAND SUSTAINABILITY“Permission-less” is not “Responsibility-less”
 Full paper: “Proof of Stake Blockchain Efficiency Framework”
 
 “Permission-less” is not “Responsibility-less”
-40
+41
 Algorand is a permission-less network 🕸, so no centralized authority can know or impose how node runners should power their nodes 💻.
 As decentralized infrastructure, Algorand is responsible for its impact on Planet Earth 🌏, although no centralized authority controls it.
 Algorand should acts proactively (not hiding behind the “permission-less excuse”) and set blockchains’ sustainability bar high 🌱.
 
 
 Proof of unsustainable Work
-41
+42
 Proof of Work is a planetary wasteful computational battle, in which miners MUST burn energy to secure the blockchain.
 Showing off personal commitment in the ecosystem through the consumption of computational and energetic resources is at the core of PoW consensus mechanism.
 
 Our planet Earth can no longer afford unsustainable technologies.
 
 
-42
+43
 A matter of orders of magnitude (PoW vs PPoS)
 Eiffel Tower
 Paper sheet thickness
@@ -457,13 +469,13 @@ Paper sheet thickness
 Full paper: “Proof of Stake Blockchain Efficiency Framework”
 
 
-43
+44
 You like to win easy!
 What about others Proof of Stake?
 
 
 When the going gets tough, the tough get going (PoS vs PPoS)
-44
+45
 Blockchain sustainability must consider scalable end-user transactions (uTPS) finality (f), nodes hardware (N), and secure network decentralization (d).
 
 
@@ -489,7 +501,7 @@ TRANSACTIONS
 
 
 Reframing the question
-45
+46
 Is Algorand blockchain efficient
 at consuming energy 
 to finalize end user useful transactions
@@ -497,7 +509,7 @@ in a secure, scalable and decentralized way?
 
 
 Algorand solves blockchain trilemma sustainably
-46
+47
 Algorand transactions are 100% available to end-users
 (other PoS blockchains consume their own transactions for consensus)
 Algorand transactions are 100% instantly final
@@ -509,11 +521,11 @@ Algorand security is a feature of its own efficiency
 Full paper: “Proof of Stake Blockchain Efficiency Framework”
 
 
-47
+48
 ALGORAND NETWORKSNodes, Indexer and APIs
 
 Algorand Node configurations
-48
+49
 Non-Relay Nodes
 Participate in the PPoS consensus (if hosting participation keys)
 Connect only to Relay Nodes 
@@ -528,13 +540,13 @@ Highly efficient communication paths, reducing communication hops
 
 
 Example of Algorand Network topology
-49
+50
 Node Metrics
 Non-Relay Nodes: 	> 1600
 Relay Nodes:		> 120
 
 
-50
+51
 Access to Algorand Network
 The Algorand blockchain is a distributed system of nodes each maintaining their local state based on validating the history of blocks and the transactions therein. Blockchain state integrity is maintained by the consensus protocol which is implemented within the Algod daemon (often referred to as the node software).
 
@@ -546,16 +558,16 @@ an Algod token from an Algorand node connected to the network you plan to intera
 These two pieces of information can be provided by your local node or by a third party node aaS.
 
 
-51
+52
 How to get an Algod Client?
 There are three ways to get a REST API Algod endpoint IP address / access token, each with their respective pros and cons depending on development goals.
 
 
-52
+53
 Algorand Networks
 
 
-53
+54
 Algorand Node -  Writing on the blockchain
 Install (Linux, MacOS, Windows)
 Choose a network (MainNet, TestNet, BetaNet, PrivateNet)
@@ -596,16 +608,16 @@ REST API interface: 	algod V2, kmd, indexer
 Algorand SDKs: 		JavaScript, Python, Java o Go
 
 
-54
+55
 Algorand Indexer - Reading from the blockchain
 The Indexer provides a REST API interface of API calls to query the Algorand blockchain. The Indexer REST APIs retrieves blockchain data from a PostgreSQL database, populated using the Indexer instance connected to an Archival Algorand node that reads blocks’ data. As with the Nodes, the Indexer can be used as a third-party service.
 
 
-55
+56
 How to interact with Algorand Node and Indexer
 
 
-56
+57
 Algorand Community SDKs
 Java
 JavaScript
@@ -619,31 +631,32 @@ Algorand SDKs
 Swift
 
 
-57
+58
 Algorand Developer Portal
 
 
-58
+59
 Awesome Algorand
 
 
-59
+60
 Algorand Wallets
-Mobile Wallet + Wallet Connect
+Pera Wallet + Wallet Connect
 MyAlgo Wallet
 AlgoSigner
 
 
-60
-Algorand Explorers
-
-
 61
+Algorand Explorers
+Dappflow
+
+
+62
 ALGORAND INTEROPERABILITYState Proofs and Post-Quantum Security
-Credits to Noah Grossman for contens
+Credits to Noah Grossman for contents
 
 Trustless interoperability
-62
+63
 Algorand approach to interoperability:
 cross-chain transactions should rely just on
 Trust in departing consensus protocol
@@ -654,16 +667,16 @@ Algorand State Proofs remove trusted centralized operators becoming the first tr
 
 
 Post-Quantum Secure Algorand State Proofs
-63
+64
 Post-Quantum secure and immutable proofs, attesting blockchain state, generated by Pure Proof of Stake consensus protocol.
 
 
-64
+65
 ALGORAND TRANSACTIONS
 Core element of blocks
 
 Changing blockchain state
-65
+66
 Transactions are the core element of blocks, which define the evolution of distributed ledger state. There are six transaction types in the Algorand Protocol:
 Payment
 Key Registration
@@ -676,7 +689,7 @@ These six transaction types can be specified in particular ways that result in m
 
 
 Signature, fees and round validity
-66
+67
 In order to be approved, Algorand’s transactions must comply with:
 
 Signatures: transactions must be correctly signed by its sender, either a Single Signature, a Multi Signature or a Smart Signature / Smart Contract
@@ -685,7 +698,7 @@ Round validity: to handle transactions’ idempotency, letting Non-Archival node
 
 
 Browse through a transaction
-67
+68
 Transactions are characterized by two kind of fields (codec):
 
 common (header)
@@ -693,16 +706,16 @@ specific (type)
 
 
 Payment Transaction example
-68
+69
 Here is a transaction that sends 5 ALGO from one account to another on MainNet.
 
 
-69
+70
 ALGORAND ACCOUNTS
 Transactions’ Authorization
 
 Signatures
-70
+71
 SECRET KEY
 32 bytes
 PUBLIC KEY
@@ -721,13 +734,13 @@ MNEMONIC: the 25-word mnemonic is generated by converting the private key bytes 
 
 
 Algorand Accounts
-71
+72
 Accounts are entities on the Algorand blockchain associated with specific on-chain local sate. An Algorand Address is the unique identifier for an Algorand Account.
 All the potential keys pairs “already exists” mathematically, we just keep discovering them.
 
 
 Transactions Authorization and Rekey-To
-72
+73
 PUBLIC ADDRESS
 MULTI SIGNATURE ACCOUNT
 LOCAL STATE
@@ -746,16 +759,16 @@ LOCAL STATE
 
 
 Account State Minimum Balance
-73
-
-
 74
+
+
+75
 ASAAlgorand Standard Assets on Layer-1
 
 ARC-3
 Algorand Standard Asset Parameters Conventions for Fungible and Non-Fungible Tokens
 
-75
+76
 Status: Final
 Defines Fungible Tokens, Pure NFT, Fractional NFTs
 Very comprehensive definition of NFT’s metadata (e.g. images, videos, audio tracks, etc.) and traits as JSON structure
@@ -769,7 +782,7 @@ Example: https://www.nftexplorer.app/asset/429087615
 ARC-69
 Community Algorand Standard Asset Parameters Conventions for Digital Media Tokens
 
-76
+77
 Status: Living
 Adopted both in art and games (https://algoseas.io/)
 Simple and succinct definition of NFT’s metadata and traits as JSON structure. Allows tratits configuration after minting
@@ -783,7 +796,7 @@ Example:  https://www.nftexplorer.app/asset/420625533
 ARC-19
 Templating of NFT ASA URLs for mutability
 
-77
+78
 Status: Final
 Has been adopted as building block of non-fungible-domain standard proposed by NFDomains
 Makes use of ASA Reserve Address to update the NFT metadata binding over time.
@@ -796,7 +809,7 @@ Example: https://app.nf.domains/name/john.algo
 ARC-20 / ARC-18
 Smart ASA / Royalty Enforcement Specification
 
-78
+79
 Status: ARC-18 (Draft), ARC-20 (Draft)
 Binds a native ASA with a Smart Contract creating a “Smart ASA”, useful whenever a decentralized transferability policy must be enforced on-chain (e.g. royalties, vesting, limited amount per day, etc.)
 Allows ASA programmable full reconfigurability on the AVM (e.g. enforcing a rule to upgrade a trait of a NFT character in game, etc.) 
@@ -805,11 +818,23 @@ ARC-18 Reference Implementation (using Beaker)
 
 
 
-79
-ALGORAND VIRTUAL MACHINE (AVM)Programming on Algorand
+80
+Algorand Virtual Machine
+Programming on Algorand
+
+
+
+
+
+
+Cosimo Bassi
+Solutions Architect at Algorand
+
+cosimo.bassi@algorand.com
+
 
 What’s a Smart Contract ?
-80
+82
 Smart Contracts are deterministic programs through which complex decentralized trustless applications can be executed on the AVM.
 The Algorand Virtual Machine is a Turing-complete secure execution environment that runs on Algorand consensus layer.
 What’s the AVM ?
@@ -817,7 +842,7 @@ What’s the AVM ?
 
 Algorand Virtual Machine purpose: approving or rejecting transactions’ effects on the blockchain according to Smart Contracts’ logic.
 What the AVM actually does?
-81
+83
 AVM approves transactions’ effects if and only if:
 There is a single non-zero value on top of AVM’s stack;
 AVM rejects transactions’ effects if and only if:
@@ -827,7 +852,7 @@ There is no value on the AVM’s stack;
 
 
 How the AVM works?
-82
+84
 Suppose we want the AVM to check the following assertion:
 1 + 2 = 3
 [...]
@@ -839,7 +864,7 @@ STACK MACHINE
 
 
 How the AVM works?
-83
+85
 Suppose we want the AVM to check the following assertion:
 1 + 2 = 3
 1
@@ -852,7 +877,7 @@ pushing first operand
 
 
 How the AVM works?
-84
+86
 Suppose we want the AVM to check the following assertion:
 1 + 2 = 3
 2
@@ -866,7 +891,7 @@ second operand
 
 
 How the AVM works?
-85
+87
 Suppose we want the AVM to check the following assertion:
 1 + 2 = 3
 2
@@ -880,7 +905,7 @@ operator
 
 
 How the AVM works?
-86
+88
 Suppose we want the AVM to check the following assertion:
 1 + 2 = 3
 3
@@ -892,7 +917,7 @@ STACK MACHINE
 
 
 How the AVM works?
-87
+89
 Suppose we want the AVM to check the following assertion:
 1 + 2 = 3
 3
@@ -906,7 +931,7 @@ last operand
 
 
 How the AVM works?
-88
+90
 Suppose we want the AVM to check the following assertion:
 1 + 2 = 3
 3
@@ -920,7 +945,7 @@ operator
 
 
 How the AVM works?
-89
+91
 Suppose we want the AVM to check the following assertion:
 1 + 2 = 3
 true
@@ -932,7 +957,7 @@ STACK MACHINE
 
 
 AVM architecture
-90
+92
 Sender
 Receiver
 Fee
@@ -1021,7 +1046,7 @@ NODE
 COMPILERS
 IDEs
 How to program the AVM?
-91
+93
 Algorand Virtual Machine (AVM)
 TEAL
 AVM Bytecode
@@ -1037,54 +1062,6 @@ Languages...
 ...
 ...
 ...
-
-
-AVM vs EVM
-92
-Algorand Virtual Machine
-Ethereum Virtual Machine
-TURING COMPLETENESS
-YES
-YES
-EXECUTION SPEED
-~ 3.8 sec
-regardless dApp complexity
-> 20 sec
-depends on dApp complexity
-ENERGY EFFICIENCY
-~10-5 [kWh/txn]
-all final
-~102 [kWh/txn]
-not all final
-EXECUTION COSTS
-Flat Fee for Smart Contract Calls and Inner Transactions
-Depends on dApp complexity
-INTEROPERABILITY
-native interoperability
-ASA, AT, MultiSig, RekeyTo...
-user defined solutions / standards
-EFFECTS FINALITY
-instant
-~ 6 blocks
-MATHEMATICAL PRECISION
-512 bits
-256 bits
-PROGRAMMABILITY
-TEAL, PyTEAL, Reach, ...
-Solidity, Viper, Reach, ...
-
-
-What can be built on the AVM?
-93
-Escrow accounts
-KYC processes
-Financial instruments (Bonds, ETFs, etc.)
-Loan payment
-Voting applications
-Auctions
-Multiparty or Delegated fund management
-Programmatic recurring fees / recurring debt
-And more...
 
 
 94
@@ -2713,16 +2690,32 @@ True
 
 
 156
-PyTEALWriting Smart Contracts with Python
-Credits to Jason Paulos for the PyTEAL presentation
+Smart Signature written in PyTEAL
+
+
+157
+PyTEAL
+Writing Smart Contracts with Python
+
+
+
+Jason Paulos
+Senior Software Engineer at Algorand
+
+
+
+Matteo Almanza
+Blockchain Engineer at Algorand
+
+
 
 What’s PyTEAL?
-157
+159
 PyTEAL is a Python language binding for Algorand Virtual Machine.
 PyTEAL allows Smart Contracts and Smart Signatures to be written in Python and then compiled to TEAL.
 
 
-158
+160
 It’s easier with PyTEAL!
 TEAL Source Code
 txn Receiver
@@ -2753,33 +2746,59 @@ COMPILE...
 AVM bytecode
 
 
-159
-Smart Signature written in PyTEAL
-
-
 PyTEAL Basics - Intro
-160
-PyTEAL expressions represent an abstract syntax tree (AST)
+161
 You’re writing Python code that produces TEAL code.
 from pyteal import *
 
-program = ...
-teal_source = compileTeal(program, mode=Mode.Application, version=5)
+program = ... # a pyteal expression
+teal_source = compileTeal(program, mode=Mode.Application, version=7)
+
+>>> teal_source
+"#pragma version 7\nintcblock 0 1\ntxn NumAppArgs\nintc_0 // 0\n==\nbnz main_l4\ntxna ApplicationArgs 0\npushbytes 0x90e75c9d..."
+
+
+
+PyTEAL Basics - Intro
+162
+PyTEAL expressions represent an abstract syntax tree (AST)
+# [...]
+program = Seq(
+   For(
+  i.store(Int(0)),
+  i.load() < Int(16),
+  i.store(i.load() + Int(1)))
+   .Do(
+       App.globalPut(
+Concat(Bytes("index"), Itob(i.load())),
+Int(1))
+   ),
+   Approve(),
+)
+Seq
+For
+Approve
+store
+<
+store
+Do
+…
 
 
 PyTEAL Basics - Types (1/2)
-161
+163
 Two basic types:
 uint64
 byte strings
 i = Int(5)
+
 x = Bytes("content")
 y = Bytes(b"\x01\x02\x03")
 z = Bytes("base16", "05")
-
+Boolean? Logic ops on uints: 0 false, non zero true
 
 PyTEAL Basics - Types (2/2)
-162
+164
 Conversion between types
 Itob - integer to bytes (8-byte big endian)
 Btoi - bytes to integer
@@ -2788,15 +2807,19 @@ Btoi(z) # produces the integer 5
 
 
 PyTEAL Basics - Math operators
-163
-Python math operators
+165
+Math and logic operators (uint as boolean: 0 is false, non zero is true)
 i = Int(10)
-j = i * Int(2) + Int(1)
+j = i * Int(2) + Int(1) # => Add(Mul(i, Int(2)), Int(1))
 k = And(Int(1), Or(Int(1), Int(0)))
-
+	
+	
+	# Expressions are not optimized
+	z = j * j # => Mul(Add(Mul(i, Int(2)), Int(1)), Add(Mul(i, Int(2)), Int(1)))
+Everything is an expression, and stay so
 
 PyTEAL Basics - Byte string manipulation
-164
+166
 Byte string manipulation
 x = Bytes("content")
 y = Concat(Bytes("example "), x) # "example content"
@@ -2804,7 +2827,7 @@ z = Substring(y, Int(2), Len(y)) # "ample content"
 
 
 PyTEAL Basics - Crypto utilities
-165
+167
 Built-in crypto utilities
 h_sha256 = Sha256(z)
 h_sha512_256 = Sha512_256(z)
@@ -2812,7 +2835,7 @@ h_keccak = Keccak256(z)
 
 
 PyTEAL Basics - Fields (1/3)
-166
+168
 Fields from the current transaction
 Txn.sender()
 Txn.accounts.length()
@@ -2823,15 +2846,18 @@ Txn.group_index()
 
 
 PyTEAL Basics - Fields (2/3)
-167
+169
 Fields from transactions in the current atomic group
 Gtxn[0].sender()
 Gtxn[Txn.group_index() - Int(1)].sender()
 Gtxn[Txn.group_index() - Int(1)].accounts[2]
 
+# Gtxn (and other globals) indexes can be both (python) int and expr
+
+Some objects can be accessed both with immediates and stack based expr (different opcodes beneath)
 
 PyTEAL Basics - Fields (3/3)
-168
+170
 Fields from execution context
 Global.group_size()
 Global.round() # current round number
@@ -2839,13 +2865,14 @@ Global.latest_timestamp() # UNIX timestamp of last round
 
 
 PyTEAL Basics - Logs
-169
+171
 Log publicly viewable messages to the chain
 	Log(Bytes("message"))
 
 
+
 PyTEAL Basics - State (1/2)
-170
+172
 Global - one instance per application
 App.globalPut(Bytes("status"), Bytes("active")) # write to global key "status"
 
@@ -2853,9 +2880,28 @@ status = App.globalGet(Bytes("status")) # read global key "status"
 
 App.globalDel(Bytes("status")) # delete global key "status"
 
+# Can also access global state of other smart contracts – no secrets
+
+
+PyTEAL Basics - State (1.5/2)
+173
+Global - one instance per application
+# Remember that we are building expressions, not fetching values
+
+old_status = App.globalGet(Bytes("status")) # read global key "status"
+program = Seq(
+	# Update status
+App.globalPut(Bytes("status"), Bytes("frozen")), # write to global key "status"
+# Check if was previously active
+If(old_status != Bytes("frozen")).Then(
+Log(Bytes("Was active")) # <= Will never execute 
+)
+)
+
+
 
 PyTEAL Basics - State (2/2)
-171
+174
 Local - one instance per opted-in account per application
 App.localPut(Txn.sender(), Bytes("level"), Int(1)) # write to sender's local key "level"
 App.localPut(Txn.accounts[1], Bytes("level"), Int(2))  # write to other account's local key "level"
@@ -2866,7 +2912,7 @@ App.localDel(Txn.sender(), Bytes("level"))  # delete sender's local key "level"
 
 
 PyTEAL Basics - Control Flow (1/5)
-172
+175
 Approve the transaction and immediately exit
 Approve()
 Reject the transaction and immediately exit
@@ -2874,7 +2920,7 @@ Reject()
 
 
 PyTEAL Basics - Control Flow (2/5)
-173
+176
 Multiple expressions can be joined into a sequence
 program = Seq(
    App.globalPut(Bytes("count"), App.globalGet(Bytes("count")) + Int(1)),
@@ -2883,7 +2929,7 @@ program = Seq(
 
 
 PyTEAL Basics - Control Flow (3/5)
-174
+177
 Basic conditions can be expressed with If, Then, Else, ElseIf
 program = Seq(
    If(App.globalGet(Bytes("count")) == Int(100))
@@ -2899,7 +2945,7 @@ program = Seq(
 
 
 PyTEAL Basics - Control Flow (4/5)
-175
+178
 Larger conditions can be expressed with Cond
 program = Cond(
    [Txn.application_id() == Int(0), on_create],
@@ -2913,7 +2959,7 @@ program = Cond(
 
 
 PyTEAL Basics - Control Flow (5/5)
-176
+179
 Loops can be expressed with For and While
 i = ScratchVar(TealType.uint64)
 
@@ -2927,7 +2973,7 @@ on_create = Seq(
 
 
 PyTEAL Basics - Subroutines (1/2)
-177
+180
 Sections of code can be put into subroutines (Python decorators)
 @Subroutine(TealType.uint64)
 def isEven(i):
@@ -2937,7 +2983,7 @@ App.globalPut(Bytes("value_is_even"), isEven(Int(10)))
 
 
 PyTEAL Basics - Subroutines (2/2)
-178
+181
 Recursion is allowed
 @Subroutine(TealType.uint64)
 def recursiveIsEven(i):
@@ -2951,14 +2997,15 @@ def recursiveIsEven(i):
 
 
 PyTEAL Basics - Inner Transactions (1/3)
-179
+182
 Every application has control of an account
 Global.current_application_address()
 
 
 PyTEAL Basics - Inner Transactions (2/3)
-180
-Applications can send transactions from this account
+183
+Applications can send transactions from this account – even to other Apps
+Limitation: no reentrancy
 Seq(
    InnerTxnBuilder.Begin(),
    InnerTxnBuilder.SetFields(
@@ -2973,7 +3020,7 @@ Seq(
 
 
 PyTEAL Basics - Inner Transactions (3/3)
-181
+184
 appAddr = Global.current_application_address()
 Seq(
    InnerTxnBuilder.Begin(),
@@ -2993,22 +3040,19 @@ Seq(
 )
 
 
-PyTeal ABI Support
-182
-PyTeal natively supports the ABI standard: it handles methods signatures and ABI JSON auto-generation.
+PyTEAL Basics - Other operations
+185
+See docs at https://pyteal.readthedocs.io/en/stable/overview.html
 
+Wide math
+Balances, assets holding and parameters
+JSON (limited) parsing
+…
 
-Beaker: Smart Contract development framework
-183
-Beaker improves the PyTeal Smart Contract development experience, making it simpler, cleaner and faster both to write and debug:
-Provides a standard way to organize code by using a Application class with @external (methods) and @internal (subroutine) decorators, with utilities for call authorization;
-Provides an ApplicationClient to deal with common needs like creating/opting-in to/calling methods;
-Provides a standard way to declare Global and Local sate, with typed values as class variables and utilities as: default values, static variables, variable initialization, etc.;
-Improves the pc=xxx error message using the SourceMap endpoint during compilation and mapping the pc back to the source TEAL with a LogicException.
 
 
 A pythonic Algorand stack
-184
+186
 Algorand Python SDK
 PyTEAL & Beaker
 PyTest for Smart Contracts unit-tests and e2e-tests
@@ -3018,95 +3062,840 @@ PyCharm IDE & AlgoDEA plug-in
 
 
 “Zero to Hero PyTEAL” crash course
-185
+187
 Join and learn in 12 lessons!
 
 
-186
-DAPP EXAMPLE & USE CASESExample: zero coupon bond
-
-Zero coupon bond
-187
-Bondholder purchase a bond (only if KYC has been verified)
-Bond application checks for bond’s maturity
-Bond Issuer re-pays the Bondholder at given rate
-
-
-BONDHOLDER
-ACCOUNT
-BOND ESCROW
-CONTRACT ACCOUNT
-Zero coupon bond
 188
-Bondholder purchase a bond (only if KYC has been passed)
-BOND
-APPLICATION
-ATOMIC TRANSACTION
-
-BOND
-APPLICATION CALL
-CBDC TRANSFER TRANSACTION
-BOND TRANSFER TRANSACTION
-CBDC
-BOND
-KYC
-APPLICATION
-LOCAL STATE
-
-KYC:    PASSED
+Algorand ABI
+Writing ABI Compliant Smart Contracts with PyTEAL
 
 
-reads
 
 
-BONDHOLDER
-ACCOUNT
-Zero coupon bond
-189
-Bond application checks for bond’s maturity
-BOND ESCROW
-CONTRACT ACCOUNT
-LOCAL STATE
 
-KYC:    PASSED
+Stefano De Angelis
+Research Solutions Architect at Algorand
 
-BOND MATURE:   NO
-BOND
-reads
-CBDC
-BOND
-APPLICATION
+stefano@algorand.com
 
 
-Zero coupon bond
+What is an ABI?
 190
-Bond Issuer re-pays the Bondholder at given rate
-ATOMIC TRANSACTION
+An ABI (Application Binary Interface) is an interface between two binary program modules, one of which is at the level of machine code. The interface defines the convention of how data is encoded/decoded into/out of the machine code via computational routines.
 
-BOND ESCROW
-CONTRACT ACCOUNT
-BONDHOLDER
-ACCOUNT
-BOND APPLICATION CALL
-BOND TRANSFER TRANSACTION
-CBDC TRANSFER TRANSACTION
-BOND
-APPLICATION
-BOND ISSUER
-ACCOUNT
-CBDC
-GLOBAL STATE
 
-INTEREST RATE:    1%
-LOCAL STATE
+Algorand ABI is the interface that defines a standard on how to call Algorand Smart Contracts, the encoding/decoding of Application Call arguments and the return values.
 
-KYC:    PASSED
+ARC4 is the specification for Algorand ABI. It defines a standard approach to call smart contract methods and describes the ABI interface description object. It is a human readable and machine readable JSON file showing the methods of a smart contracts, the required input parameters and the return values.
+Algorand ABI
+191
+ARC: Algorand Request for Comments is a collection of specifications (collected by the algorand Foundation) that talk about standardisation of development approaches. The community discuss on ARC and eventually reach an agreement making the ARC standardised.Example: I write a smart contract with a method that takes a string as a parameter. That parameter must be somehow encoded in TEAL before calling the method. So for an external client, I need to instruct them on how to call my smart contract method properly, and how to encode parameter.
 
-BOND MATURE:   YES
-BOND
+Why an Algorand ABI?
+Smart Contract developers can publish the interface JSON file before deploying the application on the blockchain.
+Client applications just need to read the interface JSON file and properly call the smart contract methods and process return values.
+—--------------
+Algorand Blockchain
+—--------------
+Smart Contract A
+Smart Contract B
+ABI Interface Repository
+{    …}
+ABI Interface JSON A
+ABI Interface JSON B
+{    …}
+dApp1
+dApp2
+Wallet
+Read
+Invoke method
+192
+The Algorand ABI facilitates the interaction between client applications and smart contracts. 
 
+ABI Interface JSON File (1/3)
+The ABI Interface JSON file is composed by three distinct JSON types called Method, Interface and Contract.
+
+A Method description defines a method with the expected arguments and return type.
+193
+
+ABI Interface JSON File (2/3)
+An Interface description defines a collection of Methods. It is a way to represent the set of methods required to implement an ARC4 compliant Smart Contract. It can be extended with other methods.
+194
+
+ABI Interface JSON File (3/3)
+A Contract description defines a specific Smart Contract that currently exists on the blockchain, and specifies all the methods the contract implements. It is an implementation of an Interface.
+195
+
+ARC4 ABI Methods standard
+The ARC4 defines a method signature as a way to identify a smart contract method. It is expressed as method name, arguments types, return type.
+add(uint64, uint64)uint128
+
+The method selector is the first 4 bytes of the hash of a signature
+SHA-512/256 hash (in hex): 8aa3b61f0f1965c3a1cbf…70184ff89dc114e877b1753254a
+Method selector (in hex): 8aa3b61f
+
+The method selector to be specified as the first argument of an Application Call transaction. The smart contract must route to the corresponding method matching the selector.
+196
+Method signatures could be very long as well as their hashed value. To optimise the space and comply with the limit of 128 bytes per arg, ARC4 introduced method selectors.
+
+PyTEAL ABI - Intro
+PyTEAL can now support the implementation of ARC4 ABI Standardised applications by introducing the following new features:
+
+Encoding/decoding basic types;
+Encoding/decoding reference types;
+Encoding/decoding transaction types;
+ABI methods standard;
+ABI Interface JSON File.
+197
+
+PyTEAL ABI - Basic Types
+AVM stack types limited to uint64, bytes. PyTEAL ABI supports new basic types whose encoding is standardized to AVM basic types.
+PyTeal Type
+Description
+abi.UintN
+An N-bit unsigned integer, where 8 <= N <= 64
+abi.Bool
+A boolean value that can be either 0 or 1
+abi.Byte
+An 8-bit unsigned integer used to indicate non-numeric data
+abi.StaticArray[T,N]
+A fixed-length array of T with N elements
+abi.Address
+A 32-byte Algorand address. This is an alias for abi.StaticArray[abi.Byte, Literal[32]]
+abi.StaticBytes[N]
+A fixed-length array with N elements of abi.Byte
+abi.DynamicArray[T]
+A variable-length array of T
+abi.DynamicBytes
+A variable length array of abi.Byte
+abi.String
+A variable-length byte array assuming UTF-8 content. This is an alias for abi.DynamicArray[abi.Byte]
+abi.TupleN, abi.NamedTuple
+A tuple of multiple types, where 0 <= N <= 5
+198
+
+PyTEAL ABI - Setting Values
+To create and instantiate an ABI Type we have the abi.make() method. 
+All Basic Types have a set() method which can be used to assign a value. 
+my_address = abi.make(abi.Address)
+my_bool = abi.make(abi.Bool)
+my_uint64 = abi.make(abi.Uint64)
+my_tuple = abi.make(abi.Tuple3[abi.Address, abi.Bool, abi.Uint64]
+
+program = Seq(
+   my_address.set(Txn.sender()),
+   my_bool.set(Txn.fee() == Int(0)),
+   my_uint64.set(5000),
+   my_tuple.set(my_address, my_bool, my_uint64)
+)
+199
+
+PyTEAL ABI - Getting Values
+Basic types have a get() method which can be used to extract that value. 
+	my_address.get() # Returns the 32-byte Algorand address of Txn.sender()
+200
+
+PyTEAL ABI - Working with NamedTuples
+A NamedTuple is a PyTEAL Tuple that has named elements.
+class User(abi.NamedTuple):
+   address: abi.Field[abi.Address]
+   balance: abi.Field[abi.Uint64]
+
+my_user = User()
+
+program = Seq(
+   my_user.set(Txn.sender(), 5000),
+   Approve(),
+)
+201
+
+PyTEAL ABI - Reference Types
+Blockchain entities passed to the AVM within the foreign arrays of the method call.
+PyTeal Type
+Description
+abi.Account
+Represents an account stored in the Txn.accounts array
+abi.Asset
+Represents an asset stored in the Txn.assets array
+abi.Application
+Represents an application stored in the Txn.applications array
+202
+
+PyTEAL ABI - Working with Reference Types (1/2)
+Reference types expose methods to obtain the ID of the object referenced and to access that object’s parameters
+@Subroutine(TealType.none)
+def check_ref_values(my_user: abi.Account, my_asset: abi.Asset, my_app: abi.Application):
+   return Assert(
+   	my_user.address() == my_app.params().creator_address(),
+   	my_asset.asset_id() == Int(5),
+   )
+
+203
+
+PyTEAL ABI - Working with Reference Types (2/2)
+Asset holding properties can be accessed using reference types
+@Subroutine(TealType.none)
+def ensure_asset_balance_is_nonzero(my_user: abi.Account, my_asset: abi.Asset):
+   return Assert(
+my_user.asset_holding(my_asset).balance() > Int(0)),
+   )
+
+204
+
+PyTEAL ABI - Transaction Types
+Transaction objects which are part of the same group of a method call. 
+A method may have multiple Transaction Type arguments, in which case they must appear in the same order as the method’s arguments immediately before the method call.
+PyTeal Type
+Description
+abi.Transaction
+A catch-all for any transaction type
+abi.PaymentTransaction
+A payment transaction
+abi.KeyRegisterTransaction
+A key registration transaction
+abi.AssetConfigTransaction
+An asset configuration transaction
+abi.AssetTransferTransaction
+An asset transfer transaction
+abi.AssetFreezeTransaction
+An asset freeze transaction
+abi.ApplicationCallTransaction
+An application call transaction
+205
+
+PyTEAL ABI - Working with Transaction Types (1/2)
+Get the absolute group index of a specific transaction in the group
+@Subroutine(TealType.none)
+def handle_txn_args(
+   any_txn: abi.Transaction, 
+   pay: abi.PaymentTransaction,
+   axfer: abi.AssetTransferTransaction):
+   return Assert(
+       any_txn.index() == Txn.group_index() - Int(3),
+       pay.index() == Txn.group_index() - Int(2),
+       axfer.index() == Txn.group_index() - Int(1),
+   )
+
+206
+
+PyTEAL ABI - Working with Transaction Types (2/2)
+Transaction Types expose a get() method which can be used to access fields from a transaction in the group
+@Subroutine(TealType.none)
+def check_txn(pay: abi.PaymentTransaction, sender: abi.Account):
+   return Assert(
+       pay.get().sender() == sender().address(),
+       pay.get().receiver() == Global.current_application_address(),
+   )
+
+207
+
+PyTEAL ABI - Subroutines
+Subroutines can now return ABI values using the ABIReturnSubroutine decorator. The output keyword is now used to store the return value
+@ABIReturnSubroutine
+def get_account_balance(account: abi.Account, *, output: abi.Uint64) -> Expr:
+   return Seq(
+      (balance := abi.Uint64()).set(App.localGet(account.get(), Bytes("balance")),
+      output.set(balance),      
+   )
+
+208
+
+PyTEAL ABI - ARC4 Program
+ABI Programs respond to two specific subtypes of application call transactions:
+Method calls: which encode a specific method to be called and the method arguments
+Bare app calls: which have no arguments and no return values
+
+ARC4 Program
+Router
+Bare Calls
+Methods
+Subroutines
+BARE CALL
+TRANSACTION
+Application call without arguments or return value. This is suited for on completion actions such as optin, close out, update, ..
+METHOD CALL
+TRANSACTION
+[args]
+Application call to a method of the smart contract. This call may pass arguments to a method and produce a return value. The first argument of this call is the method selector.
+encode/decode/log
+BARE CALL
+TRANSACTION
+App Create
+Application creation app call. It can invoke an on completion action like optin, close out, update, ..
+209
+
+PyTEAL ABI - Registering Bare Calls
+A bare app call handler can be registered with the router. The actions of a bare call handler can be either an Expr or a Subroutine 
+CallConfig options indicates whether the action is able to be called during an app creation, a non-creation, or either
+router = Router(
+   name = "ExampleApp",
+   bare_calls = BareCallActions(
+      no_op = OnCompleteAction(action=Approve(), call_config=CallConfig.CREATE),
+      opt_in = OnCompleteAction(action=Approve(), call_config=CallConfig.CREATE),
+      close_out = OnCompleteAction(action=Approve(), call_config=CallConfig.CALL),
+      update_application = OnCompleteAction(
+                           action=Assert(Txn.sender() == Global.creator_address()), 
+                           call_config=CallConfig.CREATE),
+      delete_application = OnCompleteAction(action=Reject(), call_config=CallConfig.CALL),
+   )
+)
+210
+
+PyTEAL ABI - Registering Methods
+A method decorator placed on top of the method subroutine can be used to register that method with the application router
+CallConfig options can be specified within the decorator directly
+
+  
+@router.method(no_op=CallConfig.CALL, opt_in=CallConfig.CALL)
+def my_method(a: abi.Uint64, b: abi.Uint64):
+   return Seq(
+      ...
+   )
+211
+
+Nice, we finally know how to implement ARC4 programs! Uhm?
+212
+
+PyTEAL ABI - Compiling ARC4 Programs
+The PyTEAL router object provides the compile_program() method to compile an ARC4 program into TEAL code.
+This method generates the approval and clear state programs, along with an auto-generated Contract object which represents the contract interface! 
+router = ...
+
+approval_program, clear_state_program, contract = router.compile_program(
+   version=6, optimize=OptimizeOptions(scratch_slots=True))
+
+with.open("example.json", "w") as f:
+   f.write(json.dumps(contract.dictify(), indent=4))
+213
+
+Pump my JSON: docstrings!
+214
+
+Pump my JSON: docstrings!
+215
+
+PyTEAL ABI - Calling an ARC4 Program (1/2)
+ARC4 programs can be called of-chain with the SDKs
+
+
+
+
+
+We can also use the goal CLI
+Atomic Transaction Composer is an SDK utility to construct transactions,  transaction groups, and ABI method calls with the functions addTransaction() and addMethodCall()
+Bare calls can be invoked with either goal app create or goal app <action> commands, where actions are optin, closeout, clear, update, or delete.
+Method calls can be triggered via the goal app method command
+216
+
+ARC4 programs can be also called on-chain with a contrat-to-contract call
+PyTEAL ABI - Calling an ARC4 Program (2/2)
+Inner transactions can invoke other applications’ ABI methods using the Inner Transaction Builder utility with the ExecuteMethodCall() function
+InnerTxnBuilder.ExecuteMethodCall(
+   app_id=56,
+   method_signature="add(uint64,uint64)uint128",
+   args=[5, 8],
+)
+217
+
+AlgoBank Demo!
+AlgoBank is your first ARC4 Program.
+
+It acts as a escrow for users’ funds. It exposes three ABI methods
+deposit(): Deposit some funds in the AlgoBank;
+getBalance(): Retrieve the user’s funds locked in;
+withdraw(): Claim back funds from the deposit
+
+Deployment environment:
+Algorand Sandbox: Dockerized private network!
+DappFlow: Algorand blockchain explorer
+218
+
+219
+Beaker
+Algorand dApp Has Never Been Easier
+
+
+
+
+
+Chris Kim
+Developer Advocate at Algorand
+
+chris.kim@algorand.com
+
+
+PyTeal, SDK may feel…
+Unfamiliar
+Complex
+Overwhelming 
+
+
+Note: share my experience. I found it difficult. It may feel this way. Going to show you how to do this easier 
+
+
+
+Algorand dApp Architecture
+show diagram of full dapp with frontend. compare with normal web app. 
+
+today we will learn how to write and deploy your smart contract with Beaker and learn how to interact with it with Algorand Python SDK
+
+Frontend
+Web Server
+Database
+Web2 App Architecture
+What normal web app looks like
+
+TODO:
+
+below frontend, put user icon 
+
+Algorand SDK
+Frontend
+Web Server
+Database
+Algorand Dapp Architecture
+Algorand
+Smart contract
+AVM
+Smart contract
+Algorand SDK
+What Algorand dApp would look like
+Some may not even need a database and web server. Direct interaction with Algorand blockchain. 
+
+sdk go to web server 
+
+signing transactions
+
+TODO:
+
+make the web2 parts stay the same as previous slide and just add in the new parts. 
+
+add user and wallet (key icon) 
+
+add toolbox icon for SDK 
+
+
+
+
+
+
+
+key management 
+let customer take care of it (wallets pera, myalgo, ..)
+let server handle it. (need to encrypt)
+or have custodial services like securitize
+
+
+
+web server
+serve all javascript to client
+
+node server
+
+Today we will learn
+
+Introducing Beaker: The Way dApp
+development should be
+talk about PPoS, carbon negative, solved blockchain trilemma, built by Silvio Micali, a turing awards winner
+
+Talk about AVM, why Algorand chose to create its own virtual machine. 
+
+Python smart contract framework 
+
+Code Organization (PyTeal)
+Deploy/ Call (Algorand SDK)
+Debugging
+In short, it handles all the heavy lifting for you
+
+
+Let’s see a direct comparison
+https://github.com/algorand-devrel/beaker-calculator
+
+
+
+
+Bare Pyteal
+
+Smart contract code is unfamiliar
+Need to manually define helper functions
+Frontend setup is lengthy 
+
+Beaker
+
+Smart Contract organization is familiar
+helper methods defined for you
+Easier to deploy/call contract 
+Comparison Recap
+recap of the comparison 
+
+Frontend
+Web Server
+Database
+Algorand Dapp Architecture
+Algorand
+Algorand SDK
+Smart contract
+AVM
+Smart contract
+Algorand SDK
+Smart contract
+What Algorand dApp would look like
+Some may not even need a database and web server. Direct interaction with Algorand blockchain. 
+
+sdk go to web server 
+
+signing transactions
+
+TODO:
+key management 
+let customer take care of it (wallets pera, myalgo, ..)
+let server handle it. (need to encrypt)
+or have custodial services like securitize
+
+
+
+web server
+serve all javascript to client
+
+node server
+
+Today we will learn
+
+Testing
+Application Class
+Application Client
+Sandbox
+State
+Decorators
+Smart Contract 
+Deploy/Call
+Beaker Components
+
+
+Developer Environment Setup
+
+Sandbox
+
+
+Pyteal
+
+
+Python Algorand SDK
+
+
+Beaker
+
+git clone https://github.com/algorand/sandbox.git
+Packages to Install
+
+Sandbox
+Packages to Install
+Beaker
+Python SDK
+PyTeal
+
+Launch Sandbox / Git Clone
+
+
+
+Create Virtual Environment
+
+
+
+install All Required Packages 
+Beaker Starter Kit
+python3 venv venv
+source ./venv/bin/activate
+ 
+pip install -r requirements.txt
+./sandbox up dev
+git clone [beaker-starter-kit url]
+
+Beaker: Smart Contract (PyTeal)
+
+Testing
+Application Client
+Sandbox
+Application Class
+State
+Handlers
+Smart Contract 
+Deploy/Call
+Beaker Components
+
+Application Class
+State
+Decorators
+Smart Contract 
+
+Testing
+Application Client
+Sandbox
+Application Class
+State
+Handlers
+Smart Contract 
+Deploy/Call
+Beaker Components
+
+State
+Decorators
+Application Class
+Smart Contract 
+
+Application Class
+
+Base class that all Beaker Applications should inherit from
+
+
+Included logic 
+Detect State Variables
+OnComplete methods 
+ABI Methods
+internal subroutines
+Abstraction = Simple Code
+
+Testing
+Application Client
+Sandbox
+Application Class
+State
+Handlers
+Smart Contract 
+Deploy/Call
+Beaker Components
+
+Application Class
+Decorators
+State
+Smart Contract 
+
+ Application(Global) State
+
+Use Final typing construct that prevents re-assigning of the variable name as good practice
+
+ Application(Global) State
+
+Specify state characteristics here:
+stack_type
+key (optional)
+default (optional)
+static (optional)
+descr (optional)
+ABI json File
+
+Specify state characteristics here:
+stack_type
+max_keys
+key_gen (optional)
+descr (optional)
+ Application(Global) State
+
+ABI json File
+
+ Account(Local) State
+
+Specify state characteristics here:
+stack_type
+key (optional)
+default (optional)
+static (optional)
+descr (optional)
+
+ Account(Local) State
+
+Specify state characteristics here:
+stack_type
+max_keys
+key_gen (optional)
+descr (optional)
+
+Testing
+Application Client
+Sandbox
+Application Class
+State
+Handlers
+Smart Contract 
+Deploy/Call
+Beaker Components
+
+Application Class
+State
+Decorators
+Smart Contract 
+
+Decorators
+
+@external
+
+expose methods as ABI methods
+
+automatically add the method to router
+@internal
+
+Used internally in the contract
+Can access state variables
+
+OnComplete externals
+
+create
+opt_in
+delete
+update
+clear_state
+close_out
+Support Authorization to only allow certain accounts to execute the method
+
+Decorators: @external
+
+expose methods as ABI methods
+
+automatically add the method to router
+
+Decorators: @internal
+
+returns Tealtype uint64
+
+Not exposed to ABI
+
+Decorators: @internal
+
+Access internal methods like this
+
+useful for repeated complex computation 
+
+Decorators: OnComplete Externals
+
+Available OnComplete Externals
+create
+opt_in
+delete
+update
+clear_state
+close_out
+
+Decorators: Bare Externals
+
+Only creator of the contract can call this method
+Authorize accounts that hold certain tokens
+Authorize account opted in
+
+Smart Contract Recap
+
+
+Application Class
+
+Base class that Beaker Apps inherit from
+Provide Basic functionalities
+State
+
+Application = Global
+Account = Local
+Exposed to ABI
+
+
+Decorators
+
+@external
+@internal
+OnComplete Externals
+Authorization
+
+Beaker: Deploy / Call Smart Contract
+Don’t go too deep with ABI since Beaker does it automatically for you. 
+
+Testing
+Application Client
+Sandbox
+Application Class
+State
+Handlers
+Smart Contract 
+Deploy/Call
+Beaker components
+
+Application Client
+Deploy/Call
+Sandbox
+Testing
+
+Sandbox
+
+Sandbox
+
+Sandbox
+
+Application Client
+
+Application Client
+Convenient way to interact with your smart contract 
+Saving 750 lines of code!
+
+Application Client
+
+
+No more manually
+creating transaction
+signing transaction
+submitting transaction
+waiting for confirmation
+
+Application client handles it for you
+
+
+
+Recap
+
+
+Sandbox
+
+Easily set up testing with helper methods that:
+create algod client 
+get list of sandbox accounts
+and more
+
+Application Client
+
+
+Provides over 20 helper methods you can leverage to easily deploy / call your smart contract
+
+
+
+Complete 
+RSVP App
+Create Break points and run the code 
+
+Create RSVP Event
+Guest RSVP
+Guest Check in
+Guest Refund
+Funds Withdrawal
+Event Delete 
+RSVP Features
+
+
+
+
+Algorand dApp Architecture
+What Beaker is
+Complete RSVP Example
+What Did We Learn Today?
+
+
+
+
+Beaker is Amazing
+
+Algodevs Resources
+FOLLOW ME!
 
 Thanks to the contributors!
 
+Cosimo Bassi
 Jason Paulos
 Pietro Grassano
+Matteo Almanza
+Stefano De Angelis
+Chris Kim
