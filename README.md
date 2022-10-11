@@ -46,6 +46,7 @@ remains the first and most important source of information about Algorand.
 - 🇺🇸 [Introduction to AVM and Smart Contracts](https://www.youtube.com/watch?v=fTAPLiPcj28) - Introduction to the Algorand Virtual Machine architecture and Algorand Smart Contracts (aka Applications) (with [@cusma](https://twitter.com/cusma_b)).
 - 🇺🇸 [Introduction to PyTeal](https://www.youtube.com/watch?v=zXDqJHK_Bqs) - Introduction to PyTeal, a Python framework to develop Smart Contract on Algorand (with [@matteojug](https://twitter.com/matteojug)).
 - 🇺🇸 [PyTeal ABI Smart Contracts](https://www.youtube.com/watch?v=USLcyfVD_ws) - Using PyTeal to develop _ABI-compliant_ Smart Contracts on Algorand. Final live coding section (with [@_deanste](https://twitter.com/_deanste)).
+- 🇺🇸 [Beaker](https://www.youtube.com/watch?v=031VvOxvuxY) - Framework for Algorand Smart Contract development, client and testing based on PyTeal. Live coding session (with [@HGKimChris](https://twitter.com/HGKimChris)).
 - 🇧🇷 [Introdução a AVM, nodes e Smart Contracts em PyTeal](https://www.youtube.com/watch?v=Wl2JDXudGrM) - Introdução à tecnologia Algorand, redes e nós Algorand, ferramentas de desenvolvimento e a Máquina Virtual Alagorand. Sessão final de live-coding de Smart Contracts em PyTeal (com [@cusma](https://twitter.com/cusma_b)).
 
 ## Contibuting with translations (PR)
